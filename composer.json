@@ -1,0 +1,19 @@
+{
+    "name": "keironlowe/sweep",
+    "description": "Sweeps up your WordPress site and removes all the cruft",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Keiron Lowe",
+            "email": "keiron@keironlowe.co.uk"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Sweep\\": "src/"
+        }
+    }
+}
