@@ -178,6 +178,20 @@ class Sweep
     }
 
     /**
+     * Disables the block editor.
+     *
+     * @return $this
+     */
+    public function removeBlockEditor(): self
+    {
+        static::stopIfAdminPage();
+
+        add_filter('use_block_editor_for_post', '__return_false', 10);
+
+        return $this;
+    }
+
+    /**
      * Executes all the removal functions
      *
      * @return $this
@@ -195,7 +209,8 @@ class Sweep
                     ->removeWindowsLiveWriterLink()
                     ->removeWpJsonLink()
                     ->removeRecentCommentsCSS()
-                    ->removeJQuery();
+                    ->removeJQuery()
+                    ->removeBlockEditor();
     }
 
     /**

@@ -47,3 +47,6 @@ Removes the CSS for the recent comment's widget.
 
 ### `removeJQuery()`
 Removes jQuery and in turn, jQuery Migrate. This is probably the most dangerous method, you should onlu use this if you're absolutely sure you and any plugins aren't using jQuery.
+
+### `removeBlockEditor()`
+Disables the block editor.
