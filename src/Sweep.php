@@ -6,6 +6,16 @@ class Sweep
 {
 
     /**
+     * Returns a new instance of Sweep
+     *
+     * @return static
+     */
+    public static function create(): self
+    {
+        return new static();
+    }
+
+    /**
      * Removes Emoji loader from the HEAD.
      *
      * @return $this
