@@ -50,3 +50,6 @@ Removes jQuery and in turn, jQuery Migrate. This is probably the most dangerous 
 
 ### `removeBlockEditor()`
 Disables the block editor.
+
+### `removeOEmbed()`
+Removes any oEmbed functionality.

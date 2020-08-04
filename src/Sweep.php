@@ -192,6 +192,37 @@ class Sweep
     }
 
     /**
+     * Removes any oEmbed functionality.
+     *
+     * @return $this
+     */
+    public function removeOEmbed(): self
+    {
+        static::stopIfAdminPage();
+
+        add_action('wp_footer', static function () {
+            wp_deregister_script('wp-embed');
+        });
+
+        // Remove the REST API endpoint.
+        remove_action('rest_api_init', 'wp_oembed_register_route');
+
+        // Turn off oEmbed auto discovery.
+        add_filter('embed_oembed_discover', '__return_false');
+
+        // Don't filter oEmbed results.
+        remove_filter('oembed_dataparse', 'wp_filter_oembed_result', 10);
+
+        // Remove oEmbed-specific JavaScript from the front-end
+        remove_action('wp_head', 'wp_oembed_add_host_js');
+
+        // Remove all embeds rewrite rules.
+        add_filter('rewrite_rules_array', 'disable_embeds_rewrites');
+
+        return $this;
+    }
+
+    /**
      * Executes all the removal functions
      *
      * @return $this
@@ -210,7 +241,8 @@ class Sweep
                     ->removeWpJsonLink()
                     ->removeRecentCommentsCSS()
                     ->removeJQuery()
-                    ->removeBlockEditor();
+                    ->removeBlockEditor()
+                    ->removeOEmbed();
     }
 
     /**
